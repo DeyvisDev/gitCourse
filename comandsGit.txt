@@ -1,0 +1,82 @@
+# INSTALACIÓN Y CONFIGURACIÓN
+
+git --version                 # Verifica la versión instalada de Git
+git config --global user.name "Tu Nombre"                 # Configura el nombre de usuario global
+git config --global user.email "tu.email@example.com"     # Configura el correo global
+git config --list              # Muestra toda la configuración activa
+
+# INICIALIZACIÓN Y REPOSITORIOS
+
+git init                      # Inicializa repo local vacío
+git clone <url>               # Clona repo remoto
+touch .gitignore              # Crea archivo para ignorar logs/binarios (Standard en equipos)
+
+# ESTADO Y HISTORIAL
+
+git status                    # Estado de archivos en staging/trabajo
+git log                       # Historial de commits
+git log --oneline             # Historial compacto (útil para revisión rápida)
+git log --graph               # Historial gráfico de ramas
+
+# STAGING Y COMMITS (INCLUYE COMANDOS MODERNOS)
+
+git add <archivo>             # Añade archivo al área de staging
+git add .                     # Añade todos los cambios
+git commit -m "mensaje"       # Commit con mensaje
+git rm <archivo>              # Elimina archivo y lo marca para commit
+git commit --amend            # Modifica último commit (solo si no está compartido)
+git restore <archivo>         # (Moderno) Descarta cambios en directorio de trabajo
+git restore --staged <archivo> # (Moderno) Saca archivo del staging sin borrar cambios
+git reset --hard HEAD         # Revierte todo al último commit (¡Precaución!)
+
+
+
+# RAMAS Y FLUJO (CLÁSICO Y MODERNO)
+
+git branch                    # Lista ramas locales
+git branch -a                 # Lista ramas locales y remotas
+git branch <nombre>           # Crea nueva rama
+git branch -d <nombre>        # Borra rama
+git checkout <nombre>         # (Clásico) Cambia de rama
+git switch <nombre>           # (Moderno) Cambia de rama (recomendado)
+git checkout -b <nombre>      # (Clásico) Crea y cambia rama nueva
+git switch -c <nombre>        # (Moderno) Crea y cambia rama nueva
+git merge <rama>              # Fusiona rama
+git merge --abort             # Cancela un merge si hay conflictos
+git rebase <rama>             # Reaplica cambios por encima de otra rama
+git rebase --abort            # Cancela un rebase en curso
+git cherry-pick <commit>      # Aplica un commit específico de otra rama
+
+# REMOTO Y COLABORACIÓN
+
+git remote -v                 # Lista remotos
+git remote add origin <url>   # Añade remoto
+git fetch                     # Descarga solo información remota
+git pull origin <rama>        # Descarga y fusiona cambios
+git pull --rebase             # Descarga y aplica tus cambios encima (Historial más limpio)
+git push origin <rama>        # Sube cambios a remoto
+git push -u origin <rama>     # Sube y vincula la rama (Vital para el primer push)
+git push --tags               # Sube tags al remoto
+git branch -r                 # Lista ramas remotas
+
+# UTILIDADES Y PRODUCTIVIDAD
+
+git diff                      # Muestra diferencias no staged
+git diff --staged             # Muestra diferencias staged
+git stash                     # Guarda temporalmente cambios si necesitas cambiar de rama
+git stash pop                 # Recupera el último stash
+git tag <v1.0.0>              # Crea etiqueta/anotación de versión
+git show <commit>             # Info detallada de un commit
+git mv <origen> <destino>     # Renombra/mueve archivos
+git clean -fd                 # Borra archivos no trackeados/basura (¡Cuidado!)
+
+# INSPECCIÓN Y RECUPERACIÓN
+
+git reflog                    # Historial de movimientos HEAD, útil para recuperar commits perdidos
+git bisect start              # Empieza búsqueda binaria de bugs en historial
+
+# PERSONALIZACIÓN
+
+git config --global alias.lg "log --oneline --graph --decorate --all" # Ejemplo de alias útil
+
+# FIN DEL ARTIFACT
